@@ -8,11 +8,13 @@ require 'bundler/setup'
 require 'redis'
 require 'rollout'
 
-Redis.current = Redis.new(
-  host: ENV.fetch('REDIS_HOST', '127.0.0.1'),
-  port: ENV.fetch('REDIS_PORT', '6379'),
-  db: ENV.fetch('REDIS_DB', '7'),
-)
+def redis
+ @_redis ||= Redis.new(
+    host: ENV.fetch('REDIS_HOST', '127.0.0.1'),
+    port: ENV.fetch('REDIS_PORT', '6379'),
+    db: ENV.fetch('REDIS_DB', '7'),
+  )
+end
 
 RSpec.configure do |config|
   config.example_status_persistence_file_path = '.rspec_status'
@@ -23,5 +25,5 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.before { Redis.current.flushdb }
+  config.before { redis.flushdb }
 end

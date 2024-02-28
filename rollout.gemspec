@@ -18,14 +18,14 @@ Gem::Specification.new do |spec|
   spec.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.3'
+  spec.required_ruby_version = '>= 3'
 
-  spec.add_dependency 'redis', '~> 4.0'
+  spec.add_dependency 'redis', '~> 5.0'
 
-  spec.add_development_dependency 'bundler', '>= 1.17'
+  spec.add_development_dependency 'bundler', '>= 2.4'
   spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rspec_junit_formatter', '~> 0.4'
-  spec.add_development_dependency 'rubocop', '~> 0.71'
-  spec.add_development_dependency 'simplecov', '0.17'
+  spec.add_development_dependency 'rspec', '~> 3'
+  spec.add_development_dependency 'rspec_junit_formatter', '~> 0.6'
+  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'simplecov'
 end
